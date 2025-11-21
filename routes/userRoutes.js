@@ -10,6 +10,6 @@ router.post('/logIn', controller.logInPagePost);
 router.get('/signUp', controller.signUpPageGet);
 router.post('/signUp', controller.signUpPagePost);
 
-router.get('/dash/:id', controller.dashPageGet);
+router.get('/dash', controller.dashPageGet);
 
 module.exports = router;
