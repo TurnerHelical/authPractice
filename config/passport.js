@@ -16,7 +16,7 @@ function configurePassport(passport) {
                 return done(null, false, {message: 'Invalid Credentials'});
             }
 
-            const match = await bcrypt.compare(password, user.password);
+            const match = await bcrypt.compare(password, user.password_hash);
             if (!match) {
                 return done(null, false, {message: 'Invalid Credentials'});
             }

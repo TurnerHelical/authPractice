@@ -9,11 +9,11 @@ async function logInPageGet(req, res) {
     });
 };
 
-async function logInPagePost(req, res) {
+async function logInPagePost(req, res, next) {
     passport.authenticate('local', {
-        successRedirect: '/dash',
-        failureRedirect: '/logIn'
-    })
+        successRedirect: '/user/dash',
+        failureRedirect: '/user/logIn'
+    })(req, res, next);
 
 };
 
@@ -37,7 +37,7 @@ async function signUpPagePost(req, res, next) {
         const newUser = await db.newUserInsert(user);
         req.logIn(newUser, (err) => {
             if (err) return next(err);
-            return res.redirect('/dash')
+            return res.redirect('/user/dash')
         });
         
     } catch (error) {
