@@ -8,7 +8,7 @@ const session = require('express-session');
 
 const passport = require('passport')
 
-const configurePassport = require('./config/passport');
+const {configurePassport} = require('./config/passport');
 const indexRouter = require('./routes/index.js');
 
 app.set('views', path.join(__dirname,'views'));
@@ -30,7 +30,7 @@ app.use(passport.session());
 
 configurePassport(passport);
 
-app.use((req, res) => {
+app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
 });
