@@ -24,7 +24,7 @@ async function signUpPageGet(req, res) {
     });
 };
 
-async function signUpPagePost(req, res) {
+async function signUpPagePost(req, res, next) {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = {
@@ -34,7 +34,7 @@ async function signUpPagePost(req, res) {
             first_name: req.body.fname,
             last_name: req.body.lname
         }
-        const newUser = await db.newUser(user);
+        const newUser = await db.newUserInsert(user);
         req.logIn(newUser, (err) => {
             if (err) return next(err);
             return res.redirect('/dash')

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head') %>
+    <body>
+        <%- include('partials/header') %>
+
+        <h1>Sign Up Page</h1>
+
+        <form action="/signUp" method="POST">
+            <div>
+                <label for="fname">First Name (Optional): </label>
+                <input name="fname" id="fname">
+            </div>
+
+            <div>
+                <label for="lname">Last Name (Optional): </label>
+                <input name="lname" id="lname">
+            </div>
+
+            <div>
+                <label for="email">Username: </label>
+                <input type='email' name="email" id="email" required>
+            </div>
+
+            <div>
+                <label for="username">Username: </label>
+                <input name="username" id="username" required>
+            </div>
+
+            <div>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password" required>
+            </div>
+        </form>
+    </body>
+</html>
