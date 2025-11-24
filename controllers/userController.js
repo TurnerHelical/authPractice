@@ -17,6 +17,15 @@ async function logInPagePost(req, res, next) {
 
 };
 
+async function logOutGet(req, res, next) {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/')
+    });
+};
+
 async function signUpPageGet(req, res) {
     res.render('signUp', {
         title: 'Sign Up Page',
@@ -52,4 +61,4 @@ async function dashPageGet(req, res) {
     })
 };
 
-module.exports = {logInPageGet, logInPagePost, signUpPageGet, signUpPagePost, dashPageGet};
+module.exports = {logInPageGet, logInPagePost,logOutGet, signUpPageGet, signUpPagePost, dashPageGet};
