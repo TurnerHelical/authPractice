@@ -14,4 +14,17 @@ async function boardGet(req, res, next) {
 
 };
 
-module.exports = {boardGet}
+async function newMessagePost(req, res, next) {
+    try {
+        const message = {
+            text: req.body.text,
+            user_id: req.user.id,
+        }
+        await db.newMessage(message)
+        res.redirect('/');
+    } catch (err) {
+        next(err);
+    }
+}
+
+module.exports = {boardGet, newMessagePost}

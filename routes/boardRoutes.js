@@ -4,9 +4,11 @@ const router = Router();
 
 const controller = require('../controllers/boardController');
 
-router.get('/', controller.boardGet);
 
-// router.post('/new', controller.newMessagePost);
+
+router.post('/new', controller.newMessagePost);
+
+router.get('/', controller.boardGet);
 
 
 module.exports = router;

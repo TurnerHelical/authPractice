@@ -26,6 +26,16 @@ async function getMessages(page_number) {
     const pageNumber = [page_number];
     const {rows} = await pool.query(query, pageNumber);
     return rows
+};
+
+async function newMessage(message) {
+    const query = `
+        INSERT INTO messages (user_id, text)
+        VALUES ($1, $2)
+        `;
+    const values = [message.user_id, message.text];
+
+    await pool.query(query, values);
 }
 
-module.exports = {newUserInsert, getMessages};
+module.exports = {newUserInsert, getMessages, newMessage};

@@ -17,6 +17,13 @@
                     </div>
                 <%}) %>
             </div>
+            <form action="/board/new" method="POST">
+                <div>
+                    <label for="text">Enter your message: </label>
+                    <input name="text" id="text">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </main>
     </body>
 </html>
