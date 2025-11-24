@@ -1,6 +1,7 @@
 const db = require('../db/query.js');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const { validationResult } = require('express-validator');
 
 async function logInPageGet(req, res) {
     res.render('logIn', {
@@ -34,6 +35,16 @@ async function signUpPageGet(req, res) {
 };
 
 async function signUpPagePost(req, res, next) {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render('signUp', {
+            title: "Sign Up Page",
+            stylesheet: "/styles/signUp.css",
+            errors: errors.array(),
+            data: req.body
+        });
+    }
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = {
@@ -49,8 +60,16 @@ async function signUpPagePost(req, res, next) {
             return res.redirect('/user/dash')
         });
         
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        if (err.code === '23505') {
+            return res.render('signUp', {
+                title: "Sign Up Page",
+                stylesheet: "/styles/signUp.css",
+                errors: [{ msg: "Email or username already in use" }],
+                data: req.body
+            });
+        }
+        next(err);
     }
 };
 
