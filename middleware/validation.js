@@ -42,7 +42,7 @@ const validateSignUp = [
             minSymbols: 1,
         }).withMessage('Password must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character'),
     body('confirmPassword').trim()
-        .notEmpty.withMessage('Must confirm password').bail()
+        .notEmpty().withMessage('Must confirm password').bail()
         .custom((value, {req}) => {
             if (value !== req.body.password) {
                 throw new Error('Passwords do not match');

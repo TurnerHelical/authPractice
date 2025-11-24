@@ -6,7 +6,9 @@ const { validationResult } = require('express-validator');
 async function logInPageGet(req, res) {
     res.render('logIn', {
         title: 'Login Page',
-        stylesheet: '/styles/logIn.css'
+        stylesheet: '/styles/logIn.css',
+        errors: [],
+        data: {}
     });
 };
 
@@ -22,9 +24,25 @@ async function logInPagePost(req, res, next) {
         })
     }
 
-    passport.authenticate('local', {
-        successRedirect: '/user/dash',
-        failureRedirect: '/user/logIn'
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.render('logIn', {
+                title: 'Login Page',
+                stylesheet: '/styles/logIn.css',
+                errors: [{ msg: info?.message || 'Invalid username or password' }],
+                data: { username: req.body.username || '' },
+            });
+        }
+
+        req.logIn(user,(err2) => {
+            if (err2) {
+                return next(err2);
+            }
+            return res.redirect('/user/dash');
+        });
     })(req, res, next);
 
 };
@@ -42,6 +60,8 @@ async function signUpPageGet(req, res) {
     res.render('signUp', {
         title: 'Sign Up Page',
         stylesheet: '/styles/signUp.css',
+        errors:[],
+        data: {}
     });
 };
 
