@@ -4,9 +4,11 @@ const router = Router();
 
 const controller = require('../controllers/boardController');
 
+const {ensureAuthenticated} = require('../middleware/auth');
 
 
-router.post('/new', controller.newMessagePost);
+
+router.post('/new', ensureAuthenticated, controller.newMessagePost);
 
 router.get('/', controller.boardGet);
 
