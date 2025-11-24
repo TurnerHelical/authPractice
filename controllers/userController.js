@@ -11,6 +11,17 @@ async function logInPageGet(req, res) {
 };
 
 async function logInPagePost(req, res, next) {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render('logIn', {
+            title: 'Login Page',
+            stylesheet: '/styles/logIn.css',
+            errors: errors.array(),
+            data: req.body,
+        })
+    }
+
     passport.authenticate('local', {
         successRedirect: '/user/dash',
         failureRedirect: '/user/logIn'

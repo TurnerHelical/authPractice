@@ -4,11 +4,11 @@ const router = Router();
 
 const controller = require('../controllers/userController');
 
-const {validateSignUp} = require('../middleware/validation');
+const {validateSignUp, validateLogin} = require('../middleware/validation');
 const {ensureAuthenticated} = require('../middleware/auth');
 
 router.get('/logIn', controller.logInPageGet);
-router.post('/logIn', controller.logInPagePost);
+router.post('/logIn',validateLogin, controller.logInPagePost);
 
 router.get('/logOut', ensureAuthenticated, controller.logOutGet)
 
