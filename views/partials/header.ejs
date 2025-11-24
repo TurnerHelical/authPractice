@@ -3,7 +3,16 @@
     <nav>
         <a href="/" class="navLink">Home</a>
         <a href="/board" class="navLink">Message Board</a>
-        <a href="/user"class="navLink" id="login">Login</a>
+        <% if (!currentUser) { %>
+            <a href="/user/logIn"class="navLink" id="login">Login</a>
+            <a href="/user/signUp"class="navLink" id="signUp">Sign Up</a>
+        <% } else { %>
+            <a href="/user/dash" id="userProfile">
+                <img href="#" alt="User profile picture" id="userProfileIcon" >
+                <p><%= currentUser.username%></p>
+            </a>
+            <a href="/user/logOut">Logout</a>
+        <%}%>
     </nav>
 
     <div id="titleDiv">
