@@ -1,0 +1,32 @@
+main {
+    display: grid;
+    grid-template: 1fr / 1fr 2fr 1fr;
+
+}
+
+main div {
+    grid-area: 1/2/2/3 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    background-color: rgb(234, 240, 208);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    gap: 2rem;
+}
+
+div h2 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 2.5rem;
+}
+
+div p {
+    text-align: center;
+}
+
+#iconCtr {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    margin: 0;
+}

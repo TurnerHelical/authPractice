@@ -4,8 +4,24 @@
         <body>
             <%- include('partials/header') %>
             <main>
-                <h1><%- title %></h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque mollitia accusantium officia, nostrum est, voluptate dolore sit animi at eligendi maxime quibusdam cupiditate corporis sapiente, dignissimos earum debitis! Soluta!</p>
+                <div>
+                    <h2><%- title %></h2>
+                    <p>This site was created to showcase and practice a full stack application that includes user authentication and different features that
+                        are visible depending on login state. I built this site's front-end with EJS and basic CSS, also using fonts from Google Fonts. The back-end
+                        was built in a Node enviroment and uses Express as the main framework, while also using the Passport.js, BcryptJS, Express-Validator, Express-
+                        Session, and PG libraries to simplify development.
+                        <br>
+                        <br>
+                        <br>
+                        For more of my work or to contact me follow the links below!
+                    </p>
+                    <div id="iconCtr">
+                        <a href="https://github.com/TurnerHelical"><img src="/assets/github-mark.png"></a>
+                        <a href="https://www.linkedin.com/in/hunter-leclair-51039b2bb/"><img src="/assets/InBug-Black.png"></a>
+                        <a href="https://hunter-leclair.netlify.app/"><img src="/assets/Dark_Logo.png"></a>
+                    </div>
+                    
+                </div>
             </main>
         </body>
     </html>
