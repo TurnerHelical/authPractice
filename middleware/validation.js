@@ -64,7 +64,7 @@ const validateSignUp = [
 const validateLogin = [
     body('username').trim()
         .notEmpty().withMessage('Username is required').bail()
-        .isLength({min:3, max: 25}).withMessage('Username must be between 3 an 25 characters'),
+        .isLength({min:3, max: 25}).withMessage('Username must be between 3 and 25 characters'),
     body('password').trim()
         .notEmpty().withMessage('Password is required')
 ]
