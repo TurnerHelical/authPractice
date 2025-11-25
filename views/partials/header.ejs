@@ -1,18 +1,24 @@
 <header>
    
     <nav>
-        <a href="/" class="navLink">Home</a>
-        <a href="/board" class="navLink">Message Board</a>
-        <% if (!currentUser) { %>
-            <a href="/user/logIn"class="navLink" id="login">Login</a>
-            <a href="/user/signUp"class="navLink" id="signUp">Sign Up</a>
-        <% } else { %>
-            <a href="/user/dash" id="userProfile">
-                <img href="#" alt="User profile picture" id="userProfileIcon" >
-                <p><%= currentUser.username%></p>
-            </a>
-            <a href="/user/logOut">Logout</a>
-        <%}%>
+        <div id="pageLinks">
+            <a href="/" class="navLink">Home</a>
+            <a href="/board" class="navLink">Board</a>
+        </div>
+        <div id="userProfileCtr">
+            
+                <% if (!currentUser) { %>
+                    <a href="/user/logIn"class="navLink" id="login">Login</a>
+                    <a href="/user/signUp"class="navLink" id="signUp">Sign Up</a>
+                <% } else { %>
+                    <a href="/user/dash" id="userProfile" class="navLink">
+                        <img src="/assets/user.svg" alt="User profile picture" id="userProfileIcon" >
+                        <p><%= currentUser.username%></p>
+                    </a>
+                    <a href="/user/logOut" class="navLink">Logout</a>
+                <%}%>
+            
+        </div>
     </nav>
 
     <div id="titleDiv">
