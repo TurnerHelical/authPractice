@@ -36,6 +36,14 @@ async function newMessage(message) {
     const values = [message.user_id, message.text];
 
     await pool.query(query, values);
+};
+
+async function deleteMessage(id) {
+    const query = 'DELETE FROM messages WHERE id = $1'
+
+    const value = [id];
+
+    await pool.query(query,value)
 }
 
-module.exports = {newUserInsert, getMessages, newMessage};
+module.exports = {newUserInsert, getMessages, newMessage, deleteMessage};

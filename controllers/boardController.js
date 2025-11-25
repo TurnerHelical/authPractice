@@ -36,6 +36,15 @@ async function newMessagePost(req, res, next) {
     } catch (err) {
         next(err);
     }
+};
+
+async function deleteMessageGet(req, res, next) {
+    try {
+        await db.deleteMessage(req.params.id);
+        res.redirect('/board');
+    } catch (err) {
+        next(err);
+    }
 }
 
-module.exports = {boardGet, newMessagePost}
+module.exports = {boardGet, newMessagePost, deleteMessageGet}

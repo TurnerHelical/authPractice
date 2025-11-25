@@ -10,6 +10,8 @@ const {ensureAuthenticated} = require('../middleware/auth');
 
 router.post('/new', ensureAuthenticated, controller.newMessagePost);
 
+router.get('/delete/:id', ensureAuthenticated, controller.deleteMessageGet);
+
 router.get('/', controller.boardGet);
 
 

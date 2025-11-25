@@ -16,6 +16,9 @@
                         <% if (currentUser) {%>
                             <p><%= msg.username %></p>
                         <%} %>
+                        <% if (currentUser.admin) { %>
+                            <a href='/board/delete/<%-msg.id%>'>Delete</a>
+                       <% } %>
                         
                     </div>
                 <%}) %>
