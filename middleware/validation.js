@@ -49,6 +49,9 @@ const validateSignUp = [
             }
             return true
         }),
+    body('signupCode').trim()
+        .notEmpty().withMessage('Signup code cannot be empty')
+        .matches(/^SecretSetupCode/).withMessage('Invalid signup code'),
 
 ];
 

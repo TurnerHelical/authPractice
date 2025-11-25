@@ -21,7 +21,7 @@ async function newMessagePost(req, res, next) {
             user_id: req.user.id,
         }
         await db.newMessage(message)
-        res.redirect('/');
+        res.redirect('/board');
     } catch (err) {
         next(err);
     }
