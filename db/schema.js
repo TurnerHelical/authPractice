@@ -8,6 +8,7 @@ const SQL = `
         first_name TEXT,
         last_name TEXT,
         email VARCHAR(254) NOT NULL UNIQUE,
+        admin BOOLEAN NOT NULL,
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
         );
     

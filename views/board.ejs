@@ -12,7 +12,7 @@
                 <% messages.forEach((msg) => {%>
                     <div>
                         <p><%= msg.text %></p>
-                        <p><%= msg.created_at%></p>
+                        <p><%= msg.displayTime%></p>
                         <% if (currentUser) {%>
                             <p><%= msg.username %></p>
                         <%} %>

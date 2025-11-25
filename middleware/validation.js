@@ -1,7 +1,10 @@
 const {body} = require('express-validator');
 const pool = require('../db/pool');
 
+const allowedCodes = ['SecretSetupCode', 'SecretAdminSetupCode']
+
 const validateSignUp = [
+    
     body('fname').trim()
         .optional({checkFalsy: true})
         .matches(/^[a-zA-Z'-]+$/).withMessage('Must contain only letters, hyphens, or apostrophes').bail()
@@ -49,9 +52,12 @@ const validateSignUp = [
             }
             return true
         }),
-    body('signupCode').trim()
-        .notEmpty().withMessage('Signup code cannot be empty')
-        .matches(/^SecretSetupCode/).withMessage('Invalid signup code'),
+    body('signupCode').custom((value => {
+        if (!allowedCodes.includes(value)) {
+            throw new Error("Invalid Signup code");
+        }
+        return true
+    }))
 
 ];
 

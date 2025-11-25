@@ -1,12 +1,23 @@
 const db = require('../db/query.js');
 
+
+
 async function boardGet(req, res, next) {
     try {
         const messages = await db.getMessages(1);
+
+        const formattedMessages = messages.map(msg => ({
+            ...msg,
+            displayTime: msg.created_at.toLocaleString('en-US', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+            }),
+        }));
+
         res.render('board', {
             title:'Message Board',
             stylesheet:'/styles/board.css',
-            messages,
+            messages: formattedMessages,
         });
     } catch (err) {
         next(err);

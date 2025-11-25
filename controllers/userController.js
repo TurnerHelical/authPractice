@@ -78,13 +78,18 @@ async function signUpPagePost(req, res, next) {
     }
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const isAdmin = req.body.signupCode === 'SecretAdminSetupCode'
+        
         const user = {
             username: req.body.username,
             password: hashedPassword,
             email: req.body.email,
             first_name: req.body.fname,
-            last_name: req.body.lname
+            last_name: req.body.lname,
+            admin: isAdmin,
         }
+    
         const newUser = await db.newUserInsert(user);
         req.logIn(newUser, (err) => {
             if (err) return next(err);
