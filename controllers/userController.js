@@ -110,6 +110,7 @@ async function signUpPagePost(req, res, next) {
 };
 
 async function dashPageGet(req, res) {
+    
     res.render('dash', {
         title: 'User Dashboard',
         stylesheet: '/styles/dash.css',

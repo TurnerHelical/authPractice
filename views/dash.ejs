@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <%- include('partials/head') %>
+  <%- include('partials/head') %>
 
-    <body>
-        <%- include('partials/header') %>
-        <h1> <%= currentUser.username%>'s Dashboard</h1>
-        <p><%=currentUser.first_name %> <%=currentUser.last_name%> <%=currentUser.email%></p>
-    </body>
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <div id="dashContent">
+        <h1><%= currentUser.username%>'s Dashboard</h1>
+        <div id="userCard">
+          <img src="/assets/user.svg">
+          <div id="userInfo">
+            <ul>
+                <li>Name:  <%=currentUser.first_name%> <%=currentUser.last_name%></li>
+                <li>Username:  <%=currentUser.username%></li>
+                <li>Email:  <%=currentUser.email%></li>
+                <li>Member Since:  
+                    <% const formattedTime = currentUser.created_at.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })%>
+                    <%- formattedTime %>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
