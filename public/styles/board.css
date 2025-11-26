@@ -60,7 +60,7 @@ main {
 
 .msgContent {
     display: grid;
-    grid-template: 1fr 1fr / 1fr;
+    grid-template: 1fr / 1fr;
     text-align: center;
     background-color: white;
     border-radius: 10px;

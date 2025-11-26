@@ -38,7 +38,8 @@ nav {
 }
 
 .navLink {
-    width: 140px;
+    min-width: fit-content ;
+    max-width: 300px;
     text-align: center;
     padding: .2rem 1.1rem;
     text-decoration: none;

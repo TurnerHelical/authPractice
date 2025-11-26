@@ -29,9 +29,10 @@
                 <a class="updateMsg" data-id="<%-msg.id%>" data-text="<%- msg.text %>">Update</a>
                 <% } %> <% if (currentUser.admin || currentUser.id == msg.user_id) { %>
                 <a href="/board/delete/<%-msg.id%>" class="deleteMsg">Delete</a>
-                <% } %> <%} %>
+                <% } %> 
               </div>
             </div>
+            <%} %>
           </div>
           <%}) %>
         </div>
