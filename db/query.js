@@ -14,7 +14,7 @@ async function newUserInsert(user) {
 
 async function getMessages(page_number) {
     const query = `
-    SELECT m.id, m.text, m.created_at, u.username
+    SELECT m.id, m.user_id, m.text, m.created_at, u.username
     FROM messages AS m
     JOIN users AS u
         ON m.user_id = u.id
@@ -44,6 +44,15 @@ async function deleteMessage(id) {
     const value = [id];
 
     await pool.query(query,value)
-}
+};
 
-module.exports = {newUserInsert, getMessages, newMessage, deleteMessage};
+async function updateMessage(id ,text) {
+    const query = 'UPDATE messages SET text = $1 WHERE id = $2';
+
+    const value = [text, id];
+
+    await pool.query(query,value);
+    return
+};
+
+module.exports = {newUserInsert, getMessages, newMessage, deleteMessage, updateMessage};

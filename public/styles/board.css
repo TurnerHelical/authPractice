@@ -1,0 +1,185 @@
+main {
+    display: grid;
+    grid-template: 1fr / 1fr 2fr 1fr;
+    padding: 4rem 0;
+}
+
+#boardContent {
+    grid-area: 1/2/2/3;
+    justify-self: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.backgroundUp {
+    z-index: 1001;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 40%);
+
+}
+
+#newMessage {
+    text-align: center;
+    font-size: 1.2rem;
+    width: fit-content;
+    padding: .5rem 2rem;
+    background-color: aqua;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 3px black;
+}
+
+#newMessage:hover {
+    background-color: blueviolet;
+    box-shadow: none;
+}
+
+#boardContent h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3.5rem;
+}
+
+#messageCtr { 
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr;
+    gap: 1rem;
+    width: 100%;
+    
+}
+
+.msgContent {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px black;
+    padding: 1rem;
+    gap: 10px;
+    font-size: 1.3rem;
+    background-color: rgb(234, 240, 208);
+    align-items: center;
+}
+
+.messageText {
+    grid-area: 1/1/2/3;
+    background-color: white;
+    width: 75%;
+    padding: .8rem ;
+    justify-self: center;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.userInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+
+
+.msgOptions {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    grid-area: 3/1/4/3;
+    gap: 5rem;
+}
+
+.msgOptions a {
+    text-decoration: none;
+    color: black;
+ }
+
+ .user,
+ .added {
+    flex-basis: 50%;
+ }
+
+ .updateMsg,
+ .deleteMsg {
+    background-color: white;
+    box-shadow: 0 0 2px black;
+    border-radius: 10px;
+    padding: .3rem 1rem;
+ }
+
+ .updateMsg:hover {
+    background-color: rgb(182, 173, 173);
+    box-shadow: none;
+ }
+
+ .deleteMsg:hover {
+    background-color: rgb(233, 74, 74);
+    box-shadow: none;
+ }
+
+ modal {
+    position: fixed;
+    z-index: 1002;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    background-color: rgb(234, 240, 208);
+    padding: 10rem;
+    border: 1px black solid;
+ }
+
+ .visible {
+    display: block;
+ }
+
+ .hidden {
+    display: none;
+ }
+
+
+ form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background-color:  rgb(226, 220, 220);
+    gap: 1rem;
+    border: 2px solid black;
+ }
+
+ form div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+ }
+
+ textarea {
+    resize: none;
+ }
+
+ form button {
+    align-self: center;
+    padding: .5rem 3rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(234, 240, 208);
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 0 3px black;
+ }
+
+ form button:hover {
+    background-color: white;
+ }
+

@@ -15,7 +15,7 @@
                 <li>Username:  <%=currentUser.username%></li>
                 <li>Email:  <%=currentUser.email%></li>
                 <li>Member Since:  
-                    <% const formattedTime = currentUser.created_at.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })%>
+                    <% const formattedTime = currentUser.created_at.toLocaleString('en-US', { dateStyle: 'medium'})%>
                     <%- formattedTime %>
                 </li>
             </ul>

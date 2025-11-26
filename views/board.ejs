@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <%- include('partials/head')  %>
-    <body>
-        <%- include('partials/header') %>
-        <main>
-            <h2>Message Board</h2>
-            <% if (!currentUser) {%>
-                <p><span><a href="/user/logIn">Login</a></span> or <span><a href="/user/signUp">Signup</a></span> to see more info!</p>
-            <%}%>
-            <div>
-                <% messages.forEach((msg) => {%>
-                    <div>
-                        <p><%= msg.text %></p>
-                        <p><%= msg.displayTime%></p>
-                        <% if (currentUser) {%>
-                            <p><%= msg.username %></p>
-                            <% if (currentUser.admin) { %>
-                                <a href='/board/delete/<%-msg.id%>'>Delete</a>
-                           <% } %>
-                        <%} %>
-                        
-                    </div>
-                <%}) %>
+  <%- include('partials/head') %>
+  <body id="body">
+    <%- include('partials/header') %>
+    <main>
+      <div id="boardContent">
+        <h2>Message Board</h2>
+        <% if (currentUser) { %>
+            <a id="newMessage">Add New Message</a>
+        <% } %>
+        
+        <% if (!currentUser) {%>
+        <p>
+          <span><a href="/user/logIn">Login</a></span> or
+          <span><a href="/user/signUp">Signup</a></span> to see more info!
+        </p>
+        <%}%>
+        <div id="messageCtr">
+          <% messages.forEach((msg) => {%>
+          <div class="msgContent">
+            <p class="messageText"><%= msg.text %></p>
+            <% if (currentUser) {%>
+            <div class="userInfo">
+              <p class="user"><%= msg.username %></p>
+              <p class="added"><%= msg.displayTime%></p>
+              <div class="msgOptions">
+                <% if (currentUser.id == msg.user_id) { %>
+                <a class="updateMsg" data-id="<%-msg.id%>" data-text="<%- msg.text %>">Update</a>
+                <% } %> <% if (currentUser.admin || currentUser.id == msg.user_id) { %>
+                <a href="/board/delete/<%-msg.id%>" class="deleteMsg">Delete</a>
+                <% } %> <%} %>
+              </div>
             </div>
-            <% if (currentUser) { %>
-                <form action="/board/new" method="POST">
-                    <div>
-                        <label for="text">Enter your message: </label>
-                        <input name="text" id="text">
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-
-           <% } %>
-            
-        </main>
-    </body>
+          </div>
+          <%}) %>
+        </div>
+      </div>
+    </main>
+    <modal class="hidden" id="modal">
+      <form action="/board/new" method="POST" id="modalForm">
+        <div>
+          <label for="text">Enter your message: </label>
+          <textarea name="text" id="text" rows="6" cols="25"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </modal>
+    <div class="backgroundUp hidden" id="background"></div>
+    <script src="/scripts/board.js"></script>
+  </body>
 </html>
