@@ -1,0 +1,74 @@
+main {
+    display: grid;
+    grid-template: 1fr / 1fr 2fr 1fr;
+}
+
+#signUpContent {
+    margin: 5rem 0;
+    grid-area: 1/2/2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgb(234, 240, 208);
+    border-radius: 10px;
+    font-size: 1.1rem;
+}
+
+#signUpContent h1 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.errors {
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: .3rem;
+    color: red;
+}
+
+#signUpContent form {
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr;
+    justify-content: center;
+    gap: 1.2rem;
+    background-color:  rgb(226, 220, 220);
+    padding: 2rem 4rem ;
+}
+
+#signUpContent div {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    align-items: center;
+}
+
+#signUpContent label {
+    justify-self: center;
+}
+
+#signupCodeCtr {
+    grid-area: 4/1/5/3;
+    padding-right: 9rem;
+}
+
+form button {
+    grid-area: 5/1/6/3;
+    width: fit-content;
+    justify-self: center;
+    padding: .6rem 2rem;
+    border-radius: 10px;
+    background-color: rgb(234, 240, 208);
+    border: none;
+    font-size: 1.5rem;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: white;
+    box-shadow: none;
+}
+
